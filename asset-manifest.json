@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/viktoriia-2002-goit-react-hw-02-feedback/static/css/main.7acaea2f.css",
-    "main.js": "/viktoriia-2002-goit-react-hw-02-feedback/static/js/main.3d9f9c9b.js",
+    "main.js": "/viktoriia-2002-goit-react-hw-02-feedback/static/js/main.bf1460e5.js",
     "index.html": "/viktoriia-2002-goit-react-hw-02-feedback/index.html",
     "main.7acaea2f.css.map": "/viktoriia-2002-goit-react-hw-02-feedback/static/css/main.7acaea2f.css.map",
-    "main.3d9f9c9b.js.map": "/viktoriia-2002-goit-react-hw-02-feedback/static/js/main.3d9f9c9b.js.map"
+    "main.bf1460e5.js.map": "/viktoriia-2002-goit-react-hw-02-feedback/static/js/main.bf1460e5.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.3d9f9c9b.js"
+    "static/js/main.bf1460e5.js"
   ]
 }
