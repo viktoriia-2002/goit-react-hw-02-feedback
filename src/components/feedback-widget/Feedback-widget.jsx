@@ -2,6 +2,7 @@ import React from 'react';
 import Statistics from 'components/statistics';
 import FeedbackOptions from 'components/feedbackOptions';
 import Notification from 'components/notification';
+import {Container} from './Feedback-widget.styled'
 
 class FeedbackWidget extends React.Component {
   state = {
@@ -45,7 +46,7 @@ class FeedbackWidget extends React.Component {
     const totalFeedback = this.countTotalFeedback();
 
     return (
-      <div className="FeedbackWidget">
+      <Container className="FeedbackWidget">
         <section>
           <h2 className="FeedbackWidget__title">Please leave feedback</h2>
           <FeedbackOptions
@@ -67,7 +68,7 @@ class FeedbackWidget extends React.Component {
         ) : (
           <Notification message="There is no feedback" />
         )}
-      </div>
+      </Container>
     );
   }
 }
