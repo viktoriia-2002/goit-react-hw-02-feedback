@@ -1,30 +1,33 @@
 import React from 'react';
 import Statistics from 'components/statistics';
+import FeedbackOptions from 'components/feedbackOptions';
+import Notification from 'components/notification';
 
 class FeedbackWidget extends React.Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
+    hasFeedback: false,
   };
 
-  handleGoodVote = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
+handleVote = (type) => {
+  this.setState((prevState) => ({
+    [type]: prevState[type] + 1,
+    hasFeedback: true,
+  }));
+};
 
-  handleNeutralVote = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
+resetFeedback = () => {
+    this.setState({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+      hasFeedback: false,
+    });
   };
+  
 
-  handleBadVote = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }));
-  };
 
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
@@ -39,35 +42,29 @@ class FeedbackWidget extends React.Component {
   };
 
   render() {
-    const { good, neutral, bad } = this.state;
+    const { good, neutral, bad, hasFeedback } = this.state;
     const totalFeedback = this.countTotalFeedback();
 
     return (
       <div className="FeedbackWidget">
-        <section title='FeedbackWidget__title'>Please leave feedback
-        <div>
-          <button type="button" onClick={this.handleGoodVote}>
-            Good
-          </button>
-          <button type="button" onClick={this.handleNeutralVote}>
-            Neutral
-          </button>
-          <button type="button" onClick={this.handleBadVote}>
-            Bad
-          </button>
-        </div>
-        </section>
         <section>
-          <h2 className="FeedbackWidget__title">Statistics</h2>
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            totalFeedback={totalFeedback}
-            positiveFeedback={this.countPositiveFeedbackPercentage()}
-          />
+          <h2 className="FeedbackWidget__title">Please leave feedback</h2>
+          <FeedbackOptions options={['good', 'neutral', 'bad']} onVote={this.handleVote} />
         </section>
-        <section></section>
+        {hasFeedback ? (
+          <section>
+            <h2 className="FeedbackWidget__title">Statistics</h2>
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              totalFeedback={totalFeedback}
+              positiveFeedback={this.countPositiveFeedbackPercentage()}
+            />
+          </section>
+        ) : (
+          <Notification message="There is no feedback" />
+        )}
       </div>
     );
   }

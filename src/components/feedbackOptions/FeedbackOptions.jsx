@@ -1,9 +1,15 @@
-// import React from 'react';
+import React from 'react';
 
+const FeedbackOptions = ({ options, onVote }) => {
+  return (
+    <div>
+      {options.map((option) => (
+        <button key={option} type="button" onClick={() => onVote(option)}>
+          {option}
+        </button>
+      ))}
+    </div>
+  );
+};
 
-// const FeedbackOptions extends React.Component  {
-  
-// }
-
-// export default FeedbackOptions;
-
+export default FeedbackOptions;
