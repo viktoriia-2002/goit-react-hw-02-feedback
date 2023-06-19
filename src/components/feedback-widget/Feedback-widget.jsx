@@ -11,14 +11,14 @@ class FeedbackWidget extends React.Component {
     hasFeedback: false,
   };
 
-handleVote = (type) => {
-  this.setState((prevState) => ({
-    [type]: prevState[type] + 1,
-    hasFeedback: true,
-  }));
-};
+  handleVote = type => {
+    this.setState(prevState => ({
+      [type]: prevState[type] + 1,
+      hasFeedback: true,
+    }));
+  };
 
-resetFeedback = () => {
+  resetFeedback = () => {
     this.setState({
       good: 0,
       neutral: 0,
@@ -26,8 +26,6 @@ resetFeedback = () => {
       hasFeedback: false,
     });
   };
-  
-
 
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
@@ -49,7 +47,10 @@ resetFeedback = () => {
       <div className="FeedbackWidget">
         <section>
           <h2 className="FeedbackWidget__title">Please leave feedback</h2>
-          <FeedbackOptions options={['good', 'neutral', 'bad']} onVote={this.handleVote} />
+          <FeedbackOptions
+            options={['good', 'neutral', 'bad']}
+            onVote={this.handleVote}
+          />
         </section>
         {hasFeedback ? (
           <section>
