@@ -3,19 +3,21 @@ import Statistics from 'components/statistics';
 import FeedbackOptions from 'components/feedbackOptions';
 import Notification from 'components/notification';
 
+
 class FeedbackWidget extends React.Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
-    hasFeedback: false,
   };
+
+  hasFeedback = false;
 
   handleVote = type => {
     this.setState(prevState => ({
       [type]: prevState[type] + 1,
-      hasFeedback: true,
     }));
+    this.hasFeedback = true;
   };
 
   resetFeedback = () => {
@@ -23,8 +25,8 @@ class FeedbackWidget extends React.Component {
       good: 0,
       neutral: 0,
       bad: 0,
-      hasFeedback: false,
     });
+    this.hasFeedback = false;
   };
 
   countTotalFeedback = () => {
@@ -40,8 +42,9 @@ class FeedbackWidget extends React.Component {
   };
 
   render() {
-    const { good, neutral, bad, hasFeedback } = this.state;
+    const { good, neutral, bad } = this.state;
     const totalFeedback = this.countTotalFeedback();
+    const { hasFeedback } = this;
 
     return (
       <div className="FeedbackWidget">
