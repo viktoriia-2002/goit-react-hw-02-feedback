@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {FeedbackWidget__results} from './Statistics.styled';
+import {FeedbackWidgetResult} from './Statistics.styled';
 
 const Statistics = ({ good, neutral, bad, totalFeedback, positiveFeedback }) => {
   return (
-    <FeedbackWidget__results className="FeedbackWidget__results">
+    <FeedbackWidgetResult className="FeedbackWidget__results">
       <li className="FeedbackWidget__result">Good: {good}</li>
       <li className="FeedbackWidget__result">Neutral: {neutral}</li>
       <li className="FeedbackWidget__result">Bad: {bad}</li>
       <li>Total: {totalFeedback}</li>
       <li>Positive Feedback: {positiveFeedback}%</li>
-    </FeedbackWidget__results>
+    </FeedbackWidgetResult>
   );
 };
 
